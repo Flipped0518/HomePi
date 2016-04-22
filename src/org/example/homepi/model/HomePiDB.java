@@ -1,4 +1,4 @@
-package model;
+package org.example.homepi.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import db.HomePiOpenHelper;
+import org.example.homepi.db.HomePiOpenHelper;
 
 public class HomePiDB {
 	/*
@@ -87,6 +87,7 @@ public class HomePiDB {
 			ContentValues values = new ContentValues();
 			values.put("city_name", city.getCityName());
 			values.put("city_code", city.getCityCode());
+			values.put("province_id", city.getProvinceId());
 			db.insert("City", null, values);
 		}
 	}

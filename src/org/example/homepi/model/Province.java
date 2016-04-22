@@ -1,4 +1,4 @@
-package model;
+package org.example.homepi.model;
 
 public class Province {
 	private int id;

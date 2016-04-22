@@ -1,4 +1,5 @@
-package model;
+//package model;
+package org.example.homepi.model;
 
 public class City {
 	private int id;
