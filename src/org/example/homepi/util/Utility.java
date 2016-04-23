@@ -128,4 +128,73 @@ public class Utility {
 		editor.putString("current_date", simpleDateFormat.format(new Date()));
 		editor.commit();
 	}
+	
+	/*
+	 * 解析服务器返回的空气质量的JSON数据，并将数据存储到本地
+	 */
+	public  static void  handleTempResponse(Context context, String response) {
+		try{
+			JSONObject jsonObject = new JSONObject(response);
+			String tempData = jsonObject.getString("value");
+			String timeData = jsonObject.getString("timestamp");
+			saveTempInfo(context,tempData,timeData);
+		}catch(JSONException e){
+			e.printStackTrace();
+		}
+	}
+	
+
+	public  static void  handleCo2Response(Context context, String response) {
+		try{
+			JSONObject jsonObject = new JSONObject(response);
+			String Co2Data = jsonObject.getString("value");
+			String timeData = jsonObject.getString("timestamp");
+			saveCo2Info(context,Co2Data,timeData);
+		}catch(JSONException e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public  static void  handlePmResponse(Context context, String response) {
+		try{
+			JSONObject jsonObject = new JSONObject(response);
+			String PmData = jsonObject.getString("value");
+			String timeData = jsonObject.getString("timestamp");
+			savePmInfo(context,PmData,timeData);
+		}catch(JSONException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static void  saveTempInfo(Context context, String tempData, String timeData) {
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日hh时mm分",Locale.CHINA);
+		SharedPreferences.Editor editor = PreferenceManager
+				.getDefaultSharedPreferences(context).edit();
+		editor.putString("temp_data", tempData);
+		editor.putString("time_data1", timeData);
+		editor.commit();
+
+	}
+	
+	public static void  saveCo2Info(Context context, String co2Data, String timeData) {
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日hh时mm分",Locale.CHINA);
+		SharedPreferences.Editor editor = PreferenceManager
+				.getDefaultSharedPreferences(context).edit();
+		editor.putString("co2_data", co2Data);
+		editor.putString("time_data2", timeData);
+		editor.commit();
+
+	}
+	
+	public static void  savePmInfo(Context context, String pmData, String timeData) {
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日hh时mm分",Locale.CHINA);
+		SharedPreferences.Editor editor = PreferenceManager
+				.getDefaultSharedPreferences(context).edit();
+		editor.putString("pm_data", pmData);
+		editor.putString("time_data3", timeData);
+		editor.commit();
+
+	}
+	
 }

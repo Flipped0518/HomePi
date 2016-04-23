@@ -27,6 +27,9 @@
         <activity 
             android:name="org.example.homepi.activity.WeatherActivity">           
         </activity>
+        <activity
+          	android:name="org.example.homepi.activity.AirConditionActivity">
+        </activity>    
     </application>
 
 </manifest>

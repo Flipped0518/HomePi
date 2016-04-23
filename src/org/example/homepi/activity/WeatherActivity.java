@@ -6,17 +6,23 @@ import org.example.homepi.util.HttpUtil;
 import org.example.homepi.util.Utility;
 import org.w3c.dom.Text;
 
+import android.R.raw;
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.content.DialogInterface;
+import android.content.Intent;
+//import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class WeatherActivity extends Activity{
+public class WeatherActivity extends Activity implements OnClickListener{
 	
 	private LinearLayout weatherInfoLayout;
 	/*
@@ -45,6 +51,21 @@ public class WeatherActivity extends Activity{
 	private TextView currentDateText;
 	
 	
+	/*
+	 * 切换城市按钮
+	 */
+	private Button switchCity;
+	/*
+	 *更新天气按钮
+	 */
+	private Button refreshWeather;
+	/*
+	 * 跳转按钮
+	 */
+	private Button turnToAir;
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -69,7 +90,45 @@ public class WeatherActivity extends Activity{
 			//没有县级代号时就直接显示本地天气
 			showWeather();
 		}
+		switchCity = (Button) findViewById(R.id.switch_city);
+		refreshWeather = (Button) findViewById(R.id.refresh_weather);
+		turnToAir = (Button) findViewById(R.id.turn_to_air);
+		
+		switchCity.setOnClickListener(this);
+		refreshWeather.setOnClickListener(this);
+		turnToAir.setOnClickListener(this);
 	}
+	
+
+	public void onClick(View view) {
+		// TODO Auto-generated method stub
+		switch (view.getId()) {
+		case R.id.switch_city:
+			Intent intent = new Intent(this,ChooseAreaActivity.class);
+			intent.putExtra("from_weather_activity", true);
+			startActivity(intent);
+			finish();
+			break;
+		case R.id.refresh_weather:
+			publishText.setText("同步中...");
+			SharedPreferences preferences = PreferenceManager.
+					getDefaultSharedPreferences(this);
+			String weatherCode = preferences.getString("weather_code", "");
+			if (!TextUtils.isEmpty(weatherCode)) {
+				queryWeatherInfo(weatherCode);
+			}
+			break;
+		case R.id.turn_to_air:
+			Intent intent2 = new Intent(this, AirConditionActivity.class);
+			startActivity(intent2);
+			finish();
+			break;
+		default:
+			break;
+		}
+	}
+	
+
 	
 	/*
 	 * 查询县级代号所对应的天气代号
@@ -153,4 +212,6 @@ public class WeatherActivity extends Activity{
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
 	}
+
+
 }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#484E61"
+    android:orientation="vertical" >
+    
+    
+	<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#484E61">
+        
+        <TextView 
+            android:id="@+id/indoor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Air Condition"
+            android:textColor="#fff"
+            android:textSize="24sp" />
+        <Button 
+            android:id="@+id/share_air"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/refresh"/>
+        
+    </RelativeLayout>
+    
+	
+	<LinearLayout
+	    android:id="@+id/air_condition"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    
+	    android:background="#27A5F9" 
+        android:orientation="vertical" >
+	    
+		<TextView 
+	   		android:id="@+id/temp_text"
+       		android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_gravity="center_horizontal"
+        	android:gravity="center"
+       		android:text="温度："
+        	android:textColor="#FFF"
+        	android:textSize="30sp"/>
+	
+		<TextView 
+	    	android:id="@+id/temp_data_text"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+        	android:gravity="center"
+        	android:text="TextView" 
+        	android:textColor="#FFF"
+        	android:textSize="30sp"/>
+	
+		<TextView 
+	    	android:id="@+id/co2_text"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="CO2浓度：" 
+			android:textColor="#FFF"
+			android:textSize="30sp"/>
+	
+		<TextView 
+	    	android:id="@+id/co2_data_text"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+        	android:gravity="center"
+        	android:text="TextView" 
+        	android:textColor="#FFF"
+        	android:textSize="30sp"/>
+	
+		<TextView 
+	    	android:id="@+id/pm_text"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:gravity="center"
+			android:text="PM2.5值：" 
+			android:textColor="#FFF"
+			android:textSize="30sp"/>
+	
+		<TextView 
+	    	android:id="@+id/pm_data_text"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+        	android:gravity="center"
+        	android:text="TextView" 
+        	android:textColor="#FFF"
+        	android:textSize="30sp"/>
+		
+		</LinearLayout>
+</LinearLayout>
