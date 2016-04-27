@@ -4,12 +4,9 @@ import org.example.homepi.R;
 import org.example.homepi.util.HttpCallbackListener;
 import org.example.homepi.util.HttpUtil;
 import org.example.homepi.util.Utility;
-import org.w3c.dom.Text;
 
-import android.R.raw;
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.content.DialogInterface;
 import android.content.Intent;
 //import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
